@@ -2,9 +2,9 @@ const { MONGO_DB_CONFIG } = require("../config/app.config");
 const {category} = require("../models/category.model");
 
 async function createCategory(params, callback) {
-    if(!params.categoryName ||!params.categoryDescription) {
+    if(!params.categoryName) {
        return callback({
-        message: "Category name and description are required"
+        message: "Category name required"
        }, "");
     }
 const model = new category(params);
@@ -41,7 +41,7 @@ async function getCategories(params, callback) {
      })
 }
 
-async function getcategoryById(params, callback) {
+async function getCategoryById(params, callback) {
     const categoryId = params.categoryId;   
 
     category
@@ -59,7 +59,7 @@ async function updateCategory(params, callback) {
     const categoryId = params.categoryId;   
 
     category
-    .findByIdandUpdate(categoryId, params, {useFindAndModify: false})
+    .findByIdAndUpdate(categoryId, params, {useFindAndModify: false})
     .then((response) => {
         if(!response) callback("Category not found"+ categoryId);
         else callback(null, response);
@@ -73,7 +73,7 @@ async function deleteCategory(params, callback) {
     const categoryId = params.categoryId;   
 
     category
-    .findByIdandDelete(categoryId)
+    .findByIdAndDelete(categoryId)
     .then((response) => {
         if(!response) callback("Category not found"+ categoryId);
         else callback(null, response);
@@ -86,7 +86,7 @@ async function deleteCategory(params, callback) {
 module.exports = {
     createCategory,
     getCategories,
-    getcategoryById,
+    getCategoryById,
     updateCategory,
     deleteCategory
 }

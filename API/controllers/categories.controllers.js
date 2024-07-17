@@ -22,7 +22,6 @@ exports.create = (req, res, next) => {
                 categoryDescription: normalizedBody.categoryDescription,
                 categoryImage: path ? "/" + path : "",
             };
-            //console.log('Create Category Model:', model);
             categoriesService.createCategory(model, (error, result) => {
                 if (error) {
                     next(error);
@@ -76,7 +75,7 @@ exports.update = (req, res, next) => {
         if (err) {
             next(err);
         } else {
-            const normalizedBody = normalizeKeys(req.body); // Normalize keys
+            const normalizedBody = normalizeKeys(req.body);
             const path = req.file ? req.file.path.replace(/\\/g, "/") : "";
             var model = {
                 categoryId: req.params.id,
@@ -84,6 +83,7 @@ exports.update = (req, res, next) => {
                 categoryDescription: normalizedBody.categoryDescription,
                 categoryImage: path ? "/" + path : "",
             };
+            console.log ("Model", model)
             categoriesService.updateCategory(model, (error, result) => {
                 if (error) {
                     next(error);
