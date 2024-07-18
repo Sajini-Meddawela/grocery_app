@@ -1,34 +1,30 @@
 const mongoose = require('mongoose');
 
-const category = mongoose.model(
-    "category",
-    mongoose.Schema({
+const categorySchema = new mongoose.Schema({
     categoryName: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-    categoryDescription: {
-            type: String,
-            required: true,
-        },
-    categoryImage: {
-            type: String,
-        }
+        type: String,
+        required: true,
+        unique: true,
     },
-    {
+    categoryDescription: {
+        type: String,
+        required: true,
+    },
+    categoryImage: {
+        type: String,
+    }
+}, {
     toJSON: {
-        transform: function (doc, ret){
+        transform: function (doc, ret) {
             ret.categoryId = ret._id.toString();
             delete ret._id;
-            delete ret._v;
+            delete ret.__v;
         },
     },
-}
+});
 
-)
-);
+const Category = mongoose.model('Category', categorySchema);
 
 module.exports = {
-    category,
-}
+    Category
+};
