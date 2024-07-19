@@ -4,4 +4,5 @@ class Config {
   static const String imageURL = "http://192.168.142.151:3001";
   static const String categoryAPI = "api/category";
   static const int pageSize = 10;
+  static const String currency = "Rs.";
 }
