@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/models/category.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grocery_app/models/pagination.dart';
-import 'package:grocery_app/providers/category.provider.dart';
+import 'package:grocery_app/providers.dart';
 
 class HomeCategoriesWidget extends ConsumerWidget {
   const HomeCategoriesWidget({Key? key}) : super(key: key);
