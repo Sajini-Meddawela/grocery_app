@@ -27,6 +27,8 @@ abstract class Product with _$Product {
   }) = _Product;
   factory Product.fromJson(Map<String, dynamic>json) => 
   _$ProductFromJson(json);
+
+  get categoryId => null;
 }
 
 extension ProductExt on Product {

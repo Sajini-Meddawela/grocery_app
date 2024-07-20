@@ -322,6 +322,10 @@ class _$ProductImpl implements _Product {
       this,
     );
   }
+  
+  @override
+  // TODO: implement categoryId
+  get categoryId => throw UnimplementedError();
 }
 
 abstract class _Product implements Product {

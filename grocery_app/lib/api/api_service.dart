@@ -47,6 +47,10 @@ Future<List<Product>?> getProducts(ProductFilterModel productFilterModel) async 
       queryString['categoryId'] = productFilterModel.categoryId!;
     }
 
+    if (productFilterModel.sortBy != null){
+      queryString["sort"] = productFilterModel.sortBy!;
+    }
+
     var url = Uri.http(Config.apiURL, Config.productAPI, queryString);
 
     var response = await client.get(url, headers: requestHeaders);
